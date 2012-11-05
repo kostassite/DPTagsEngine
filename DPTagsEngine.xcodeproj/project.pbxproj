@@ -18,6 +18,7 @@
 		2E37E7BE164712790086FD29 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E37E7BD164712790086FD29 /* Default-568h@2x.png */; };
 		2E37E7CC164713050086FD29 /* DPTagsEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E7CB164713050086FD29 /* DPTagsEngine.m */; };
 		2E37E7CF164722010086FD29 /* DPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E7CE164722010086FD29 /* DPTag.m */; };
+		2EFFB4611648731D004CF549 /* DPTagTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFB4601648731C004CF549 /* DPTagTextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		2E37E7CB164713050086FD29 /* DPTagsEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPTagsEngine.m; sourceTree = "<group>"; };
 		2E37E7CD164722010086FD29 /* DPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTag.h; sourceTree = "<group>"; };
 		2E37E7CE164722010086FD29 /* DPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPTag.m; sourceTree = "<group>"; };
+		2EFFB45F1648731C004CF549 /* DPTagTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTagTextField.h; sourceTree = "<group>"; };
+		2EFFB4601648731C004CF549 /* DPTagTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPTagTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 		2E37E7C8164712E70086FD29 /* DPTagsEngine */ = {
 			isa = PBXGroup;
 			children = (
+				2EFFB45F1648731C004CF549 /* DPTagTextField.h */,
+				2EFFB4601648731C004CF549 /* DPTagTextField.m */,
 				2E37E7CD164722010086FD29 /* DPTag.h */,
 				2E37E7CE164722010086FD29 /* DPTag.m */,
 				2E37E7CA164713050086FD29 /* DPTagsEngine.h */,
@@ -186,6 +191,7 @@
 				2E37E7B8164712790086FD29 /* AppDelegate.m in Sources */,
 				2E37E7CC164713050086FD29 /* DPTagsEngine.m in Sources */,
 				2E37E7CF164722010086FD29 /* DPTag.m in Sources */,
+				2EFFB4611648731D004CF549 /* DPTagTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
