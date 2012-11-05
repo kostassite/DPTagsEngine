@@ -8,10 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol DPTagsEngineDelegate <NSObject>
+
+-(void)textRemoved:(NSString*)text;
+-(void)textAdded:(NSString*)text;
+
+@end
+
 @interface DPTagsEngine : NSObject{
 	NSArray *allTags;
 }
 
 -(void)loadDatabase;
+
+@property (nonatomic,strong) NSString *searchString;
+@property (nonatomic,weak) id<DPTagsEngineDelegate> delegate;
 
 @end
