@@ -19,6 +19,8 @@
 		2E37E7CC164713050086FD29 /* DPTagsEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E7CB164713050086FD29 /* DPTagsEngine.m */; };
 		2E37E7CF164722010086FD29 /* DPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E7CE164722010086FD29 /* DPTag.m */; };
 		2EFFB4611648731D004CF549 /* DPTagTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFB4601648731C004CF549 /* DPTagTextField.m */; };
+		2EFFB46616487AA4004CF549 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFB46416487AA4004CF549 /* RootViewController.m */; };
+		2EFFB46716487AA4004CF549 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFFB46516487AA4004CF549 /* RootViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,9 @@
 		2E37E7CE164722010086FD29 /* DPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPTag.m; sourceTree = "<group>"; };
 		2EFFB45F1648731C004CF549 /* DPTagTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTagTextField.h; sourceTree = "<group>"; };
 		2EFFB4601648731C004CF549 /* DPTagTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPTagTextField.m; sourceTree = "<group>"; };
+		2EFFB46316487AA4004CF549 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		2EFFB46416487AA4004CF549 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		2EFFB46516487AA4004CF549 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +94,9 @@
 			children = (
 				2E37E7B6164712790086FD29 /* AppDelegate.h */,
 				2E37E7B7164712790086FD29 /* AppDelegate.m */,
+				2EFFB46316487AA4004CF549 /* RootViewController.h */,
+				2EFFB46416487AA4004CF549 /* RootViewController.m */,
+				2EFFB46516487AA4004CF549 /* RootViewController.xib */,
 				2E37E7C8164712E70086FD29 /* DPTagsEngine */,
 				2E37E7AE164712790086FD29 /* Supporting Files */,
 			);
@@ -177,6 +185,7 @@
 				2E37E7BA164712790086FD29 /* Default.png in Resources */,
 				2E37E7BC164712790086FD29 /* Default@2x.png in Resources */,
 				2E37E7BE164712790086FD29 /* Default-568h@2x.png in Resources */,
+				2EFFB46716487AA4004CF549 /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +201,7 @@
 				2E37E7CC164713050086FD29 /* DPTagsEngine.m in Sources */,
 				2E37E7CF164722010086FD29 /* DPTag.m in Sources */,
 				2EFFB4611648731D004CF549 /* DPTagTextField.m in Sources */,
+				2EFFB46616487AA4004CF549 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
