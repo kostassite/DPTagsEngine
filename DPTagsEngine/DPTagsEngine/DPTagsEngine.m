@@ -95,7 +95,11 @@
 	
 	if (restarted) {
 		textField.text=@"";
+		searchString=[[NSMutableString alloc]initWithString:@""];
 		restarted=NO;
+		if ([string isEqualToString:@""]) {
+			return YES;
+		}
 	}
 	
 	if ([string isEqualToString:@""]) { //mikrine
@@ -105,7 +109,7 @@
 		[searchString appendString:string];
 		[self searchForBiggerString];
 	}
-	NSLog(@"%@",searchString);
+
 	return YES;
 }
 
