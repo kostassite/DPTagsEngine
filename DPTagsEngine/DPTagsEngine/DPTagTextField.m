@@ -87,7 +87,15 @@
 	CGSize textSize=[tag.text sizeWithFont:font constrainedToSize:CGSizeMake(320, 20) lineBreakMode:NSLineBreakByTruncatingTail];
 	[btn setFrame:CGRectMake(0, 0, textSize.width+10, 20)];
 	[btn setTitle:tag.text forState:UIControlStateNormal];
+	[btn addTarget:self action:@selector(tagPressed:) forControlEvents:UIControlEventTouchUpInside];
 	return btn;
+}
+
+#pragma mark - Button/Tags Actions
+
+-(void)tagPressed:(UIButton*)sender{
+	self.text=[sender titleForState:UIControlStateNormal];
+	[self endEditing:YES];
 }
 
 #pragma mark - DPTagsEngineDelegate
