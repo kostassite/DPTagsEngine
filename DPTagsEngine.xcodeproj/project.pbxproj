@@ -18,6 +18,7 @@
 		2E37E7BE164712790086FD29 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E37E7BD164712790086FD29 /* Default-568h@2x.png */; };
 		2E37E7CC164713050086FD29 /* DPTagsEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E7CB164713050086FD29 /* DPTagsEngine.m */; };
 		2E37E7CF164722010086FD29 /* DPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E7CE164722010086FD29 /* DPTag.m */; };
+		2EAA47751649114900DAFCB5 /* MyTagsEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAA47741649114900DAFCB5 /* MyTagsEngine.m */; };
 		2EFFB4611648731D004CF549 /* DPTagTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFB4601648731C004CF549 /* DPTagTextField.m */; };
 		2EFFB46616487AA4004CF549 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFFB46416487AA4004CF549 /* RootViewController.m */; };
 		2EFFB46716487AA4004CF549 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EFFB46516487AA4004CF549 /* RootViewController.xib */; };
@@ -41,6 +42,8 @@
 		2E37E7CB164713050086FD29 /* DPTagsEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPTagsEngine.m; sourceTree = "<group>"; };
 		2E37E7CD164722010086FD29 /* DPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTag.h; sourceTree = "<group>"; };
 		2E37E7CE164722010086FD29 /* DPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPTag.m; sourceTree = "<group>"; };
+		2EAA47731649114900DAFCB5 /* MyTagsEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTagsEngine.h; sourceTree = "<group>"; };
+		2EAA47741649114900DAFCB5 /* MyTagsEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTagsEngine.m; sourceTree = "<group>"; };
 		2EFFB45F1648731C004CF549 /* DPTagTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTagTextField.h; sourceTree = "<group>"; };
 		2EFFB4601648731C004CF549 /* DPTagTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPTagTextField.m; sourceTree = "<group>"; };
 		2EFFB46316487AA4004CF549 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 				2EFFB46316487AA4004CF549 /* RootViewController.h */,
 				2EFFB46416487AA4004CF549 /* RootViewController.m */,
 				2EFFB46516487AA4004CF549 /* RootViewController.xib */,
+				2EAA47731649114900DAFCB5 /* MyTagsEngine.h */,
+				2EAA47741649114900DAFCB5 /* MyTagsEngine.m */,
 				2E37E7C8164712E70086FD29 /* DPTagsEngine */,
 				2E37E7AE164712790086FD29 /* Supporting Files */,
 			);
@@ -202,6 +207,7 @@
 				2E37E7CF164722010086FD29 /* DPTag.m in Sources */,
 				2EFFB4611648731D004CF549 /* DPTagTextField.m in Sources */,
 				2EFFB46616487AA4004CF549 /* RootViewController.m in Sources */,
+				2EAA47751649114900DAFCB5 /* MyTagsEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

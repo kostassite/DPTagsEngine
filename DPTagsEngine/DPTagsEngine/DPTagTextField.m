@@ -19,10 +19,22 @@
 
 @implementation DPTagTextField
 
--(void)awakeFromNib{
-	[self startTagEngine];
+
+//-(void)awakeFromNib{
+//	[self setTagsEngine:[self defaultTagEngine]];
+//}
+//
+//-(DPTagsEngine*)defaultTagEngine{
+//	return [[DPTagsEngine alloc]init];
+//}
+
+-(void)setTagsEngine:(DPTagsEngine*)tagEngine{
+	tags=tagEngine;
 	self.delegate=tags;
+	[tags loadDatabase];
+	[tags setDelegate:self];
 }
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -31,12 +43,6 @@
         // Initialization code
     }
     return self;
-}
-
--(void)startTagEngine{
-	tags=[[DPTagsEngine alloc]init];
-	[tags loadDatabase];
-	[tags setDelegate:self];
 }
 
 -(UIView*)inputAccessoryView{

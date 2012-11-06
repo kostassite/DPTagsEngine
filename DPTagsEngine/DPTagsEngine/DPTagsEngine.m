@@ -7,7 +7,6 @@
 //
 
 #import "DPTagsEngine.h"
-#import "DPTag.h"
 
 @interface DPTagsEngine (){
 	NSMutableArray *foundTags;

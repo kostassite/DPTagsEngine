@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DPTag.h"
 
 @protocol DPTagsEngineDelegate <NSObject>
 
+@optional
 -(void)textRemoved:(NSString*)text;
 -(void)textAdded:(NSString*)text;
 -(void)tagsArrayUpdatedTo:(NSArray*)newArray;

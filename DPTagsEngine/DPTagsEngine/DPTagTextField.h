@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class DPTagsEngine;
+
 @interface DPTagTextField : UITextField
+
+-(void)setTagsEngine:(DPTagsEngine*)tagEngine;
 
 @end

@@ -7,8 +7,11 @@
 //
 
 #import "RootViewController.h"
+#import "DPTagTextField.h"
+#import "MyTagsEngine.h"
 
 @interface RootViewController ()
+@property (weak, nonatomic) IBOutlet DPTagTextField *tagsTextField;
 
 @end
 
@@ -26,6 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	MyTagsEngine *tagsEngine=[[MyTagsEngine alloc]init];
+	[self.tagsTextField setTagsEngine:tagsEngine];
     // Do any additional setup after loading the view from its nib.
 }
 
