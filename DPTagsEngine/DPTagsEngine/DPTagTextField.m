@@ -68,7 +68,7 @@
 				[newBtn setFrame:oldFrame];
 			}else{
 				CGRect oldFrame=CGRectZero;
-				oldFrame.origin.y=30;
+				oldFrame.origin.y=previousBtn.frame.origin.y+25;
 				oldFrame.origin.x=5;
 				oldFrame.size=newBtn.frame.size;
 				[newBtn setFrame:oldFrame];

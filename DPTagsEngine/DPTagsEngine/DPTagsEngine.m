@@ -27,7 +27,6 @@
 	[temp addObject:[DPTag tagWithText:@"devpro" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"develop" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"prof" andCount:2]];
-	[temp addObject:[DPTag tagWithText:@"prof" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"kostis" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"athens" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"athina" andCount:2]];
@@ -35,6 +34,12 @@
 	[temp addObject:[DPTag tagWithText:@"aside" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"beside" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"pro" andCount:2]];
+	[temp addObject:[DPTag tagWithText:@"dev" andCount:2]];
+	[temp addObject:[DPTag tagWithText:@"devpro" andCount:2]];
+	[temp addObject:[DPTag tagWithText:@"antono" andCount:2]];
+	[temp addObject:[DPTag tagWithText:@"chalkis" andCount:2]];
+
+
 	allTags=[temp copy];
 	searchString=[[NSMutableString alloc]initWithCapacity:0];
 	oldStates=[[NSMutableArray alloc]initWithArray:[NSArray arrayWithObject:allTags]];
