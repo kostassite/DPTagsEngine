@@ -51,7 +51,7 @@
 	foundTags=[[NSMutableArray alloc]initWithArray:oldTags];
 	
 	for (DPTag *tag in oldTags) {
-		if ([tag.text rangeOfString:searchString].location ==NSNotFound ) {
+		if ([tag.text rangeOfString:searchString options:NSCaseInsensitiveSearch].location ==NSNotFound ) {
 			[foundTags removeObject:tag];
 			if (self.delegate && [self.delegate respondsToSelector:@selector(textAdded:)]) {
 				[self.delegate textRemoved:tag.text];
