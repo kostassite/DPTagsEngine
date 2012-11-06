@@ -8,19 +8,20 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
-
+#import "DPTagsTableViewController.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	RootViewController *rootVC=[[RootViewController alloc]init];
-	
+	DPTagsTableViewController *tagsVC=[[DPTagsTableViewController alloc]init];
+	UINavigationController *navContr=[[UINavigationController alloc]initWithRootViewController:tagsVC];
 	
 	
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-	[self.window setRootViewController:rootVC];
+	[self.window setRootViewController:navContr];
     [self.window makeKeyAndVisible];
     return YES;
 }
