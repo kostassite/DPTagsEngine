@@ -102,6 +102,12 @@
 
 }
 
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+	if (self.delegate && [self.delegate respondsToSelector:@selector(textSelected:)]) {
+		[self.delegate textSelected:textField.text];
+	}
+}
+
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
 	
 	if (restarted) {

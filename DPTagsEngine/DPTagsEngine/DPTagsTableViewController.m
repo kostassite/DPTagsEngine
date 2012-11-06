@@ -7,19 +7,24 @@
 //
 
 #import "DPTagsTableViewController.h"
-#import "DPTag.h"
 #import "DPTagTextField.h"
-#import "DPTagsEngine.h"
 #import "MyTagsEngine.h"
 
-@interface DPTagsTableViewController (){
-	NSArray *tagsArray;
+@interface DPTagsTableViewController ()<DPTagTextFieldDelegate>{
 	DPTagsEngine *tagsEngine;
 }
 
 @end
 
 @implementation DPTagsTableViewController
+@synthesize tagsArray=_tagsArray;
+
+-(NSMutableArray*)tagsArray{
+	if (!_tagsArray) {
+		_tagsArray=[[NSMutableArray alloc]init];
+	}
+	return _tagsArray;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,6 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
 	tagsEngine=[[MyTagsEngine alloc]init];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -52,7 +58,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [tagsArray count]+1;
+    return [self.tagsArray count]+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,8 +72,7 @@
     if (indexPath.row==0) {
 		[cell.textLabel setText:@"Add new Tag"];
 	}else{
-		DPTag *current=[tagsArray objectAtIndex:indexPath.row];
-		[cell.textLabel setText:current.text];
+		[cell.textLabel setText:[self.tagsArray objectAtIndex:indexPath.row-1]];
     }
 	
     return cell;
@@ -106,6 +111,7 @@
 	if (indexPath.row==0) {
 		UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
 		DPTagTextField *tagTextField=[[DPTagTextField alloc]init];
+		[tagTextField setTagDelegate:self];
 		[tagTextField setTagsEngine:tagsEngine];
 		[tagTextField setBorderStyle:UITextBorderStyleRoundedRect];
 		[tagTextField setFrame:CGRectMake(30, 10, 250, 40)];
@@ -114,4 +120,11 @@
 	}
 }
 
+#pragma mark - DPTagTextFieldDelegate
+
+-(void)tagTextField:(DPTagTextField *)tagTextField selectedTagText:(NSString *)tagText{
+	[self.tagsArray addObject:tagText];
+	[self.tableView endEditing:YES];
+	[self.tableView reloadData];
+}
 @end

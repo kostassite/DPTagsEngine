@@ -16,6 +16,7 @@
 -(void)textAdded:(NSString*)text;
 -(void)tagsArrayUpdatedTo:(NSArray*)newArray;
 -(void)textCleared;
+-(void)textSelected:(NSString*)text;
 
 @end
 

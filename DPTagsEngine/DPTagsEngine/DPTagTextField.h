@@ -9,9 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @class DPTagsEngine;
+@class DPTagTextField;
+
+@protocol DPTagTextFieldDelegate <NSObject>
+
+@optional
+-(void)tagTextField:(DPTagTextField*)tagTextField selectedTagText:(NSString*)tagText;
+
+@end
 
 @interface DPTagTextField : UITextField
 
 -(void)setTagsEngine:(DPTagsEngine*)tagEngine;
+
+@property (nonatomic,weak) id<DPTagTextFieldDelegate> tagDelegate;
 
 @end

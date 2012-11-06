@@ -10,4 +10,6 @@
 
 @interface DPTagsTableViewController : UITableViewController
 
+@property (nonatomic,strong) NSMutableArray *tagsArray;
+
 @end

@@ -18,7 +18,7 @@
 @end
 
 @implementation DPTagTextField
-
+@synthesize tagDelegate;
 
 //-(void)awakeFromNib{
 //	[self setTagsEngine:[self defaultTagEngine]];
@@ -119,6 +119,12 @@
 
 -(void)textCleared{
 	[self clearAccessoryView];
+}
+
+-(void)textSelected:(NSString *)text{
+	if (self.tagDelegate && [tagDelegate respondsToSelector:@selector(tagTextField:selectedTagText:)]) {
+		[self.tagDelegate tagTextField:self selectedTagText:text];
+	}
 }
 
 @end
