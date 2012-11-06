@@ -117,14 +117,18 @@
 		[tagTextField setFrame:CGRectMake(30, 10, 250, 40)];
 		[cell.contentView addSubview:tagTextField];
 		[cell.textLabel setText:@""];
+		[tagTextField becomeFirstResponder];
 	}
 }
 
 #pragma mark - DPTagTextFieldDelegate
 
 -(void)tagTextField:(DPTagTextField *)tagTextField selectedTagText:(NSString *)tagText{
-	[self.tagsArray addObject:tagText];
+	if (![self.tagsArray containsObject:tagText]) {
+		[self.tagsArray addObject:tagText];
+	}
 	[self.tableView endEditing:YES];
+	
 	[self.tableView reloadData];
 }
 @end
