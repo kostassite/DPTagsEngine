@@ -45,14 +45,21 @@
 	return accessoryView;
 }
 
+-(UITextFieldViewMode)clearButtonMode{
+	return UITextFieldViewModeWhileEditing;
+}
 
 #pragma mark - Button Creation
 
--(void)createButtonsFromArray:(NSArray*)tagsArray{
-	
+-(void)clearAccessoryView{
 	for (UIView *subview in [accessoryView subviews]) {
 		[subview removeFromSuperview];
 	}
+}
+
+-(void)createButtonsFromArray:(NSArray*)tagsArray{
+	
+	[self clearAccessoryView];
 	
 	UIButton *previousBtn;
 	for (DPTag *tag in tagsArray) {
@@ -101,15 +108,11 @@
 #pragma mark - DPTagsEngineDelegate
 
 -(void)tagsArrayUpdatedTo:(NSArray *)newArray{
-//	NSLog(@"%@",newArray);
 	[self createButtonsFromArray:newArray];
 }
 
-//-(void)textAdded:(NSString *)text{
-//	NSLog(@"Added -> %@",text);
-//}
-//
-//-(void)textRemoved:(NSString *)text{
-//	NSLog(@"Removed -> %@",text);
-//}
+-(void)textCleared{
+	[self clearAccessoryView];
+}
+
 @end

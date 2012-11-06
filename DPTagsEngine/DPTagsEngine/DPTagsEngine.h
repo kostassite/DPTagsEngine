@@ -13,6 +13,7 @@
 -(void)textRemoved:(NSString*)text;
 -(void)textAdded:(NSString*)text;
 -(void)tagsArrayUpdatedTo:(NSArray*)newArray;
+-(void)textCleared;
 
 @end
 

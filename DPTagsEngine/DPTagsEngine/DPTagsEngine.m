@@ -14,6 +14,7 @@
 	NSMutableString *searchString;
 	
 	NSMutableArray *oldStates;
+	BOOL restarted;
 }
 
 @end
@@ -41,8 +42,6 @@
 
 
 	allTags=[temp copy];
-	searchString=[[NSMutableString alloc]initWithCapacity:0];
-	oldStates=[[NSMutableArray alloc]initWithArray:[NSArray arrayWithObject:allTags]];
 }
 
 -(void)searchForBiggerString{
@@ -82,10 +81,23 @@
 
 #pragma mark - UITextFieldDelegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
+	searchString=[[NSMutableString alloc]initWithString:textField.text];
+	oldStates=[[NSMutableArray alloc]initWithArray:[NSArray arrayWithObject:allTags]];
 	
+	restarted=NO;
+	if (![textField.text isEqualToString:@""]) {
+		restarted=YES;
+	}
+
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+	
+	if (restarted) {
+		textField.text=@"";
+		restarted=NO;
+	}
+	
 	if ([string isEqualToString:@""]) { //mikrine
 		[searchString deleteCharactersInRange:NSMakeRange([searchString length]-1, 1)];
 		[self searchForSmallerString];
@@ -93,10 +105,19 @@
 		[searchString appendString:string];
 		[self searchForBiggerString];
 	}
-
+	NSLog(@"%@",searchString);
 	return YES;
 }
 
-
+-(BOOL)textFieldShouldClear:(UITextField *)textField{
+	searchString=[[NSMutableString alloc]initWithString:@""];
+	oldStates=[[NSMutableArray alloc]initWithArray:[NSArray arrayWithObject:allTags]];
+	
+	if (self.delegate && [self.delegate respondsToSelector:@selector(textCleared)]) {
+		[self.delegate textCleared];
+	}
+	
+	return YES;
+}
 
 @end
