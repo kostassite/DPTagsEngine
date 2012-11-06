@@ -24,9 +24,9 @@
 
 -(void)loadDatabase{
 	NSMutableArray *temp=[[NSMutableArray alloc]init];
-	[temp addObject:[DPTag tagWithText:@"kostas" andCount:2]];
-	[temp addObject:[DPTag tagWithText:@"devpro" andCount:2]];
-	[temp addObject:[DPTag tagWithText:@"develop" andCount:2]];
+	[temp addObject:[DPTag tagWithText:@"kostas" andCount:1]];
+	[temp addObject:[DPTag tagWithText:@"devprow" andCount:40]];
+	[temp addObject:[DPTag tagWithText:@"develop" andCount:1]];
 	[temp addObject:[DPTag tagWithText:@"prof" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"kostis" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"athens" andCount:2]];
@@ -34,9 +34,9 @@
 	[temp addObject:[DPTag tagWithText:@"optimus" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"aside" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"beside" andCount:2]];
-	[temp addObject:[DPTag tagWithText:@"pro" andCount:2]];
-	[temp addObject:[DPTag tagWithText:@"dev" andCount:2]];
-	[temp addObject:[DPTag tagWithText:@"devpro" andCount:2]];
+	[temp addObject:[DPTag tagWithText:@"pro" andCount:5]];
+	[temp addObject:[DPTag tagWithText:@"dev" andCount:3]];
+	[temp addObject:[DPTag tagWithText:@"devpro" andCount:30]];
 	[temp addObject:[DPTag tagWithText:@"antono" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"chalkis" andCount:2]];
 
@@ -72,7 +72,19 @@
 
 -(void)tagsDatabaseUpdated{
 	NSMutableArray *latestArray=[[NSMutableArray alloc]initWithArray:[oldStates lastObject]];
+	
 	if ([latestArray count]<=30) {
+		
+		[latestArray sortUsingComparator:^NSComparisonResult(DPTag *obj1, DPTag *obj2) {
+			if (obj1.count>obj2.count) {
+				return NSOrderedAscending;
+			}else if (obj1.count<obj2.count){
+				return NSOrderedDescending;
+			}else{
+				return NSOrderedSame;
+			}
+		}];
+		
 		if (self.delegate && [self.delegate respondsToSelector:@selector(tagsArrayUpdatedTo:)]) {
 			[self.delegate tagsArrayUpdatedTo:latestArray];
 		}
@@ -123,5 +135,8 @@
 	
 	return YES;
 }
+
+
+
 
 @end
