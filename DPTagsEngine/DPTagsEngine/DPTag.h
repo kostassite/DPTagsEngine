@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DPTag : NSObject
+@interface DPTag : NSObject<NSCopying>
 
 @property (nonatomic,strong) NSString *text;
 @property (nonatomic,readwrite) NSInteger count;

@@ -18,10 +18,18 @@
 	return new;
 }
 
+- (id)copyWithZone:(NSZone *)zone{
+	return [self copy];
+}
+
 -(DPTag*)copy{
 	DPTag *copied=[[DPTag alloc]init];
 	copied.text=[self.text copy];
 	copied.count=self.count;
 	return copied;
+}
+
+-(NSString*)description{
+	return [NSString stringWithFormat:@"%3d | %@",count,text];
 }
 @end
