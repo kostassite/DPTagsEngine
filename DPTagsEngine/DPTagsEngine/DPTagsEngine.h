@@ -12,16 +12,17 @@
 
 -(void)textRemoved:(NSString*)text;
 -(void)textAdded:(NSString*)text;
+-(void)tagsArrayUpdatedTo:(NSArray*)newArray;
 
 @end
 
-@interface DPTagsEngine : NSObject{
+@interface DPTagsEngine : NSObject<UITextFieldDelegate>{
 	NSArray *allTags;
 }
 
 -(void)loadDatabase;
 
-@property (nonatomic,strong) NSString *searchString;
+
 @property (nonatomic,weak) id<DPTagsEngineDelegate> delegate;
 
 @end

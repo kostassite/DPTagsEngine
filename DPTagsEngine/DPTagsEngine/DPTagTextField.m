@@ -7,14 +7,21 @@
 //
 
 #import "DPTagTextField.h"
+#import "DPTagsEngine.h"
 
-@interface DPTagTextField (){
+@interface DPTagTextField ()<DPTagsEngineDelegate>{
 	UIView*	accessoryView;
+	DPTagsEngine *tags;
 }
 
 @end
 
 @implementation DPTagTextField
+
+-(void)awakeFromNib{
+	[self startTagEngine];
+	self.delegate=tags;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -26,6 +33,11 @@
     return self;
 }
 
+-(void)startTagEngine{
+	tags=[[DPTagsEngine alloc]init];
+	[tags loadDatabase];
+	[tags setDelegate:self];
+}
 
 -(UIView*)inputAccessoryView{
 	accessoryView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 60)];
@@ -33,13 +45,20 @@
 	return accessoryView;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
+
+
+#pragma mark - DPTagsEngineDelegate
+
+-(void)tagsArrayUpdatedTo:(NSArray *)newArray{
+	NSLog(@"%@",newArray);
+}
+
+-(void)textAdded:(NSString *)text{
+	NSLog(@"Added -> %@",text);
+}
+
+-(void)textRemoved:(NSString *)text{
+	NSLog(@"Removed -> %@",text);
+}
 @end

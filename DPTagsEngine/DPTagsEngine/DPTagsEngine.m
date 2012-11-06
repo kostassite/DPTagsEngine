@@ -10,14 +10,15 @@
 #import "DPTag.h"
 
 @interface DPTagsEngine (){
-	NSMutableArray *oldFoundTags;
 	NSMutableArray *foundTags;
+	NSMutableString *searchString;
+	
+	NSMutableArray *oldStates;
 }
 
 @end
 
 @implementation DPTagsEngine
-@synthesize searchString=_searchString;
 @synthesize delegate;
 
 -(void)loadDatabase{
@@ -30,42 +31,67 @@
 	[temp addObject:[DPTag tagWithText:@"kostis" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"athens" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"athina" andCount:2]];
-	[temp addObject:[DPTag tagWithText:@"kostis" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"optimus" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"aside" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"beside" andCount:2]];
 	[temp addObject:[DPTag tagWithText:@"pro" andCount:2]];
 	allTags=[temp copy];
+	searchString=[[NSMutableString alloc]initWithCapacity:0];
+	oldStates=[[NSMutableArray alloc]initWithArray:[NSArray arrayWithObject:allTags]];
 }
 
--(void)searchForString{
-	if (foundTags) {
-		oldFoundTags=foundTags;
-	}
+-(void)searchForBiggerString{
+	NSMutableArray *oldTags;
+
+	oldTags=[[NSMutableArray alloc]initWithArray:[oldStates lastObject]];
+
+	foundTags=[[NSMutableArray alloc]initWithArray:oldTags];
 	
-	foundTags=nil;
-	foundTags=[[NSMutableArray alloc]init];
-	for (DPTag *tag in allTags) {
-		if ([tag.text rangeOfString:_searchString].location !=NSNotFound ) {
-			if (foundTags) {
-				[foundTags addObject:tag.text];
-				if (self.delegate && [self.delegate respondsToSelector:@selector(textAdded:)]) {
-					[self.delegate textAdded:tag.text];
-				}
+	for (DPTag *tag in oldTags) {
+		if ([tag.text rangeOfString:searchString].location ==NSNotFound ) {
+			[foundTags removeObject:tag];
+			if (self.delegate && [self.delegate respondsToSelector:@selector(textAdded:)]) {
+				[self.delegate textRemoved:tag.text];
 			}
+		}
+	}
+	[oldStates addObject:foundTags];
+	[self tagsDatabaseUpdated];
+}
+
+-(void)searchForSmallerString{
+	[oldStates removeLastObject];
+	[self tagsDatabaseUpdated];
+}
+
+#pragma mark - Update
+
+-(void)tagsDatabaseUpdated{
+	NSMutableArray *latestArray=[[NSMutableArray alloc]initWithArray:[oldStates lastObject]];
+	if ([latestArray count]<=30) {
+		if (self.delegate && [self.delegate respondsToSelector:@selector(tagsArrayUpdatedTo:)]) {
+			[self.delegate tagsArrayUpdatedTo:latestArray];
 		}
 	}
 }
 
--(void)deleteFromOldFoundTags{
-	NSString *newString=[_searchString copy];
-	for (NSString *oldText in oldFoundTags) {
-		if ([oldText rangeOfString:newString].location==NSNotFound) {
-			if (self.delegate && [self.delegate respondsToSelector:@selector(textRemoved:)]) {
-				[self.delegate textRemoved:oldText];
-			}
-		}
-	}
+#pragma mark - UITextFieldDelegate
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+	
 }
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+	if ([string isEqualToString:@""]) { //mikrine
+		[searchString deleteCharactersInRange:NSMakeRange([searchString length]-1, 1)];
+		[self searchForSmallerString];
+	}else{
+		[searchString appendString:string];
+		[self searchForBiggerString];
+	}
+
+	return YES;
+}
+
+
 
 @end
