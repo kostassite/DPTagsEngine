@@ -18,6 +18,7 @@
 
 @implementation DPTagsTableViewController
 @synthesize tagsArray=_tagsArray;
+@synthesize delegate;
 
 -(NSMutableArray*)tagsArray{
 	if (!_tagsArray) {
@@ -47,6 +48,13 @@
      self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tagsTableVC:willDisappearWithTagsArray:)]) {
+        [self.delegate tagsTableVC:self willDisappearWithTagsArray:self.tagsArray];
+    }
+    [super viewWillDisappear:animated];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -93,6 +101,14 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(tagsTableVC:removedTagText:)]) {
+            [self.delegate tagsTableVC:self removedTagText:[self.tagsArray objectAtIndex:indexPath.row-1]];
+        }
+        
+        if (self.delegate && [self.delegate respondsToSelector:@selector(tagsTableVC:updatedWithNewTagsArray:)]) {
+            [self.delegate tagsTableVC:self updatedWithNewTagsArray:self.tagsArray];
+        }
+        
         [self.tagsArray removeObjectAtIndex:indexPath.row-1];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
@@ -130,6 +146,14 @@
 	[self.tableView endEditing:YES];
 	
 	[self.tableView reloadData];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tagsTableVC:addedNewTagText:)]) {
+        [self.delegate tagsTableVC:self addedNewTagText:tagText];
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tagsTableVC:updatedWithNewTagsArray:)]) {
+        [self.delegate tagsTableVC:self updatedWithNewTagsArray:self.tagsArray];
+    }
 }
 
 -(void)tagTextField:(DPTagTextField *)tagTextField returnedWithNewTagText:(NSString *)tagText{
@@ -139,6 +163,14 @@
 	[self.tableView endEditing:YES];
 	
 	[self.tableView reloadData];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tagsTableVC:addedNewTagText:)]) {
+        [self.delegate tagsTableVC:self addedNewTagText:tagText];
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tagsTableVC:updatedWithNewTagsArray:)]) {
+        [self.delegate tagsTableVC:self updatedWithNewTagsArray:self.tagsArray];
+    }
 }
 
 @end
