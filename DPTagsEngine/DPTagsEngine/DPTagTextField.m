@@ -10,7 +10,7 @@
 #import "DPTagsEngine.h"
 #import "DPTag.h"
 
-@interface DPTagTextField ()<DPTagsEngineDelegate>{
+@interface DPTagTextField ()<DPTagsEngineDelegate,UITextFieldDelegate>{
 	UIView*	accessoryView;
 	DPTagsEngine *tags;
 }
@@ -19,14 +19,6 @@
 
 @implementation DPTagTextField
 @synthesize tagDelegate;
-
-//-(void)awakeFromNib{
-//	[self setTagsEngine:[self defaultTagEngine]];
-//}
-//
-//-(DPTagsEngine*)defaultTagEngine{
-//	return [[DPTagsEngine alloc]init];
-//}
 
 -(void)setTagsEngine:(DPTagsEngine*)tagEngine{
 	tags=tagEngine;
@@ -40,6 +32,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.returnKeyType=UIReturnKeyDone;
+        [self setDelegate:self];
         // Initialization code
     }
     return self;
@@ -125,6 +119,12 @@
 	if (self.tagDelegate && [tagDelegate respondsToSelector:@selector(tagTextField:selectedTagText:)]) {
 		[self.tagDelegate tagTextField:self selectedTagText:text];
 	}
+}
+
+-(void)textAfterReturnedPressed:(NSString *)text{
+    if (self.tagDelegate && [self.tagDelegate respondsToSelector:@selector(tagTextField:returnedWithNewTagText:)]) {
+        [self.tagDelegate tagTextField:self returnedWithNewTagText:text];
+    }
 }
 
 @end

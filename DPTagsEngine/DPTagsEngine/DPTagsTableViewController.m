@@ -131,4 +131,14 @@
 	
 	[self.tableView reloadData];
 }
+
+-(void)tagTextField:(DPTagTextField *)tagTextField returnedWithNewTagText:(NSString *)tagText{
+    if (![self.tagsArray containsObject:tagText]) {
+		[self.tagsArray addObject:tagText];
+	}
+	[self.tableView endEditing:YES];
+	
+	[self.tableView reloadData];
+}
+
 @end

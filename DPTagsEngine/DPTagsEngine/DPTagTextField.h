@@ -15,7 +15,7 @@
 
 @optional
 -(void)tagTextField:(DPTagTextField*)tagTextField selectedTagText:(NSString*)tagText;
-
+-(void)tagTextField:(DPTagTextField *)tagTextField returnedWithNewTagText:(NSString *)tagText;
 @end
 
 @interface DPTagTextField : UITextField

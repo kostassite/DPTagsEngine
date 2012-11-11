@@ -142,6 +142,12 @@
 }
 
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(textAfterReturnedPressed:)]) {
+        [self.delegate textAfterReturnedPressed:textField.text];
+    }
+    return YES;
+}
 
 
 @end

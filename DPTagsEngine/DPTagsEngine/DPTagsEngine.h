@@ -17,6 +17,7 @@
 -(void)tagsArrayUpdatedTo:(NSArray*)newArray;
 -(void)textCleared;
 -(void)textSelected:(NSString*)text;
+-(void)textAfterReturnedPressed:(NSString*)text;
 
 @end
 
