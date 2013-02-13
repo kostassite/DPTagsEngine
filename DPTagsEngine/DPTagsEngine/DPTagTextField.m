@@ -10,7 +10,7 @@
 #import "DPTagsEngine.h"
 #import "DPTag.h"
 
-@interface DPTagTextField ()<DPTagsEngineDelegate,UITextFieldDelegate>{
+@interface DPTagTextField ()<UITextFieldDelegate>{
 	UIView*	accessoryView;
 	DPTagsEngine *tags;
 }

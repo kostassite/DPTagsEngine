@@ -23,11 +23,15 @@
 
 @interface DPTagsEngine : NSObject<UITextFieldDelegate>{
 	NSArray *allTags;
+	NSMutableArray *foundTags;
+	NSMutableString *searchString;
+	
+	NSMutableArray *oldStates;
 }
 
 -(void)loadDatabase;
 
-
+-(void)tagsDatabaseUpdated;
 @property (nonatomic,weak) id<DPTagsEngineDelegate> delegate;
 
 @end

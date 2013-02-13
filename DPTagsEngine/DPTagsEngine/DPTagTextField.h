@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DPTagsEngine.h"
 
 @class DPTagsEngine;
 @class DPTagTextField;
@@ -18,7 +19,7 @@
 -(void)tagTextField:(DPTagTextField *)tagTextField returnedWithNewTagText:(NSString *)tagText;
 @end
 
-@interface DPTagTextField : UITextField
+@interface DPTagTextField : UITextField<DPTagsEngineDelegate>
 
 -(void)setTagsEngine:(DPTagsEngine*)tagEngine;
 

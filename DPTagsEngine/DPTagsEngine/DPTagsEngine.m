@@ -9,10 +9,7 @@
 #import "DPTagsEngine.h"
 
 @interface DPTagsEngine (){
-	NSMutableArray *foundTags;
-	NSMutableString *searchString;
-	
-	NSMutableArray *oldStates;
+
 	BOOL restarted;
 }
 
